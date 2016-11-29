@@ -1,0 +1,33 @@
+<launch>
+
+  <arg name='type'/>
+
+  <node
+    name='$(arg type)'
+    pkg='rospid'
+    type='$(arg type).py'/>
+
+  <node
+    name='reconfig'
+    pkg='rqt_reconfigure'
+    type='rqt_reconfigure'/>
+
+  <node
+    name='point_pub'
+    pkg='rostopic'
+    type='rostopic'
+    args="pub -r 10 /point geometry_msgs/Point  '{x: 0.0, y: 0.0, z: 0.0}'"/>
+
+  <node
+    name='ref_pub'
+    pkg='rostopic'
+    type='rostopic'
+    args="pub -r 10 /reference geometry_msgs/Point  '{x: 1.0, y: 0.0, z: 0.0}'"/>
+
+  <node
+    name='plot'
+    pkg='rqt_plot'
+    type='rqt_plot'
+    args='/control'/>
+
+</launch>

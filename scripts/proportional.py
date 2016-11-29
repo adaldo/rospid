@@ -17,17 +17,17 @@ class Proportional(abt.Abstract):
 
     def reconfig_callback(self, config, level):
         self.LOCK.acquire()
-        rp.logwarn(self.__GAIN)
+        #rp.logwarn(self.__GAIN)
         self.__GAIN[0][0] = config["x"]
-        self.__GAIN[0][1] = config["xy"]
-        self.__GAIN[1][0] = config["xy"]
-        self.__GAIN[0][2] = config["xz"]
-        self.__GAIN[2][0] = config["xz"]
+        #self.__GAIN[0][1] = config["xy"]
+        #self.__GAIN[1][0] = config["xy"]
+        #self.__GAIN[0][2] = config["xz"]
+        #self.__GAIN[2][0] = config["xz"]
         self.__GAIN[1][1] = config["y"]
-        self.__GAIN[1][2] = config["yz"]
-        self.__GAIN[2][1] = config["yz"]
+        #self.__GAIN[1][2] = config["yz"]
+        #self.__GAIN[2][1] = config["yz"]
         self.__GAIN[2][2] = config["z"]
-        rp.logwarn(self.__GAIN)
+        #rp.logwarn(self.__GAIN)
         self.LOCK.release()
         return config
 
